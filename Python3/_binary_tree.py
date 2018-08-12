@@ -4,10 +4,11 @@ current is current node BUT not an element
 '''
 
 class Node():
-	def __init__(self, val, left=None, right=None):
+	def __init__(self, val, left=None, right=None, arr=[]):
 		self.val = val
 		self.left = left
 		self.right = right
+		self.arr = arr
 	''' inserting element '''
 	def insert(self, new_val):
 		''' If the input val is less than current node '''
@@ -23,14 +24,17 @@ class Node():
 				self.right = Node(new_val)
 		pass	
 	
-	''' printing tree '''
-	def print_tree(self):
+	''' printing tree // also return string or sorted tree'''
+	def print_tree(self, arr):
 		if(self.left != None):
-			self.left.print_tree()
-		print(self.val)
+			self.left.print_tree(arr)
+		#print(self.val)
+		arr.append(str(self.val))
 		if(self.right != None):
-			self.right.print_tree()
-		pass
+			self.right.print_tree(arr)
+		return (''.join(arr))
+		
+
 
 	''' check exist '''
 	def search(self, val):
@@ -44,5 +48,5 @@ class Node():
 		else: # Not Found
 			found = False
 		return found
-
+	
 
