@@ -2,15 +2,28 @@ import string
 input_unique = "abcdefghijk"
 input_not_unique = "abbcdeff"
 
-test1 = "acd"
-test1 = list(test1)
+unique = set()
+is_unique = True
 
-iter_list = list(range(0,26))
-char_list = string.ascii_lowercase[:26]
-#print(iter_list)
-# Let's use binary tree
+''' test unique '''
+for i in range(0, len(input_unique)):
+	if input_unique[i] in unique:
+		is_unique = False
+		break
+	else: # is still unique / new character
+		unique.add(input_unique[i])
 
-''' Convert string to list of char '''
-for i in range(0, len(test1)):
-	print(string.ascii_lowercase.index(test1[i]))
-#print(string.ascii_lowercase.index('b'))
+print('String contains unique character? ', is_unique)
+
+is_unique = True
+
+''' Test not unique '''
+for i in range(0, len(input_not_unique)):
+	if input_not_unique[i] in unique:
+		is_unique = False
+		break
+	else: # is still unique / new character
+		unique.add(input_not_unique[i])
+
+
+print('String contains unique character? ' , is_unique)
